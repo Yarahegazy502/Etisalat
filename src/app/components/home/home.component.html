@@ -10,15 +10,18 @@
 
   <section class="statistics mt-4">
     <div class="container">
-      <div class="row">
+      <div class="row gy-4">
         <div class="col-lg-4">
-          <div class="statistic-card p-3">
-            <h5 class="fs-5-1 mb-0">All Jobs Status</h5>
-
+          <div class="statistic-card p-3 h-100">
+            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
+              <h5 class="fs-5-1 mb-0">All Jobs Status</h5>
+              <p-dropdown [options]="statusTypes" [(ngModel)]="statusType" optionLabel="name" placeholder="Type"
+                [filter]="false" [styleClass]="'status-type-dropdown'"></p-dropdown>
+            </div>
           </div>
         </div>
         <div class="col-lg-8">
-          <div class="statistic-card p-3">
+          <div class="statistic-card p-3 h-100">
             <h5 class="fs-5-1 mb-1">My Daily Jobs Status</h5>
             <p class="text-muted-color fs-6-1">Latest Update On 10-5-2023</p>
             <div class="d-flex align-items-center gap-md-5 gap-4 flex-wrap mt-4">
@@ -78,4 +81,21 @@
       </div>
     </div>
   </section>
+
+  <section class="activites mt-5">
+    <div class="container">
+      <h4 class="activities-title position-relative pb-2">Recent Activities</h4>
+      <p class="text-muted-color fs-5-2">Latest Update On 10-5-2023</p>
+
+      <div class="row gy-4">
+        @for (item of activities; track $index) {
+        <div class="col-lg-3 col-md-6">
+          <app-activitie-card [item]="item"></app-activitie-card>
+        </div>
+        }
+      </div>
+    </div>
+
+  </section>
+
 </div>

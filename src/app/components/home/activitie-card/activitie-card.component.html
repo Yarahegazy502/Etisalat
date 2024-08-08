@@ -1,0 +1,19 @@
+<div class="activitie-card p-3">
+  <h5 class="fs-1 fw-bold">{{item.count}}</h5>
+  <div class="d-flex justify-content-between gap-2">
+    <div class="d-flex gap-1 align-items-center flex-wrap">
+      <div class="activitie-icon d-flex justify-content-center align-items-center">
+        <i class="pi pi-copy fs-5-2"></i>
+      </div>
+      <p class="fs-5-1 mb-0">
+        <span class="fw-bold">{{item.total}}</span>
+        Total Job
+      </p>
+    </div>
+    <a>
+      <i class="pi pi-angle-right text-main-color fs-4"></i>
+    </a>
+  </div>
+  <h6 class="fs-5-1 mt-2">Action Type</h6>
+  <p class="mb-0 fw-light">{{item.actionType | date:'dd-mm-yyyy hh:mm:ss'}}</p>
+</div>
