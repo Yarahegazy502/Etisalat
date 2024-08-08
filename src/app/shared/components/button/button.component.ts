@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() text: string = '';
-  @Input() hasIcon: boolean = false;
+  @Input() icon: string = '';
   @Input() isDisabled: boolean = false;
   @Input() type: 'solid-main' | 'outline-main' = 'solid-main';
 }

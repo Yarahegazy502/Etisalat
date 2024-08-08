@@ -5,7 +5,23 @@
       var(--bg-dark-color),
       var(--bg-main-color)
     );
-    min-height: 15rem;
+    min-height: 13rem;
     border-radius: 0 0 15px 15px;
+  }
+
+  .statistics {
+    .statistic-card {
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+    .statistic-icon {
+      width: 2rem;
+      min-width: 2rem;
+      height: 2rem;
+      border-radius: 6px;
+      background-color: var(--statistic-icon-bg);
+      color: var(--statistic-icon-color);
+    }
   }
 }

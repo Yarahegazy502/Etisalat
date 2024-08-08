@@ -1,9 +1,7 @@
 <button class="btn btn-{{type}} d-flex justify-content-center align-items-center gap-1 rounded-pill"
   [disabled]="isDisabled">
-  @if (hasIcon) {
-  <span>
-    <ng-content></ng-content>
-  </span>
+  @if (icon) {
+  <i [class]="icon"></i>
   }
   <span>
     {{text}}
