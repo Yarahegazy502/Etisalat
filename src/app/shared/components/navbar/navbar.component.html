@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg  w-100 d-xl-block d-none">
+  <!-- position-fixed -->
+  <div class="container px-0">
+    <span class="navbar-brand me-4">
+      <img [ngSrc]="'assets/images/logos/logo.png'" alt="logo" class="logo w-100" width="82" height="48">
+    </span>
+    <button class="navbar-toggler border-0" type="button">
+    </button>
+    <div class="collapse navbar-collapse m-auto justify-content-between align-items-center" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0 gap-4">
+        @for(link of navAllLinks;track link.id){
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="[link.route]" routerLinkActive="active-link" [title]="link.name">
+            {{link.name}}
+          </a>
+        </li>
+        }
+      </ul>
+      <div class="d-flex align-items-center gap-4 py-lg-0 py-3">
+        @if(isUserLoggedIn){
+        <app-button [text]="'download samples'" [type]="'outline-main'"></app-button>
+        <app-button [text]="'create Batch'" [type]="'solid-main'" [hasIcon]="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="21"
+            height="21" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+            <path d="M9 12h6" />
+            <path d="M12 9v6" />
+          </svg>
+        </app-button>
+        <app-user-info></app-user-info>
+        }@else {
+        <button class="btn login-btn d-flex justify-content-center gap-2 rounded-pill" (click)="login()">
+          login
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login" width="24" height="24"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill=" none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+            <path d="M21 12h-13l3 -3" />
+            <path d="M11 15l-3 -3" />
+          </svg>
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+</nav>

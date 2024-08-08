@@ -1,0 +1,11 @@
+#home {
+  .search {
+    background-image: linear-gradient(
+      to right,
+      var(--bg-dark-color),
+      var(--bg-main-color)
+    );
+    min-height: 15rem;
+    border-radius: 0 0 15px 15px;
+  }
+}

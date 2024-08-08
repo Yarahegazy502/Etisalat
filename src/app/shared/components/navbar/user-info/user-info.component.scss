@@ -1,0 +1,35 @@
+.dropdown {
+  .nav-link {
+    color: #818894;
+
+    &:hover {
+      background-color: #84548e36;
+      color: var(--text-main-color) !important;
+      border-radius: 5px;
+    }
+  }
+
+  .logout {
+    color: #dc3545;
+  }
+
+  .dropdown-menu {
+    right: 0 !important;
+    left: inherit;
+    min-width: 13rem;
+  }
+}
+.profile-img {
+  width: 2.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--bg-main-color);
+  .overlay-img {
+    visibility: hidden;
+  }
+  &:hover {
+    .overlay-img {
+      visibility: visible;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.navbar {
+  .navbar-nav {
+    .nav-link {
+      color: var(--text-dark-color);
+      font-weight: 600;
+      &.active-link {
+        color: var(--text-main-color);
+      }
+    }
+  }
+}
