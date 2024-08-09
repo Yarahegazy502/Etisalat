@@ -1,6 +1,7 @@
 import { ActivitiesSkeletonComponent } from './activities-skeleton/activities-skeleton.component';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { AddEditPostComponent } from './add-edit-post/add-edit-post.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 import { AlertsService } from './../../services/generic/alerts.service';
 import { ActivitiesService } from './../../services/activities.service';
 import { PublicService } from '../../services/generic/public.service';
@@ -89,6 +90,15 @@ export class ActivitiesComponent {
     });
   }
 
+  postDetails(item: any): void {
+    const ref = this.dialogService?.open(PostDetailsComponent, {
+      data: item,
+      header: 'Post Details',
+      dismissableMask: true,
+      width: '50%',
+      styleClass: 'custom-modal',
+    });
+  }
 
   //Start Delete Post Functions
   deletePost(item: any): void {
@@ -121,6 +131,7 @@ export class ActivitiesComponent {
     }
   }
   //End Delete Post Functions
+
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription: Subscription) => {
