@@ -1,5 +1,5 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Activities } from '../../../interfaces/home';
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,4 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class ActivitieCardComponent {
   @Input() item!: Activities;
+  @Output() detailsHandler = new EventEmitter();
+
+  details(): void {
+    this.detailsHandler.emit();
+  }
 }

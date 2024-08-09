@@ -117,7 +117,8 @@
           <h4 class="activities-title position-relative pb-2">Recent Activities</h4>
           <p class="text-muted-color fs-5-2">Latest Update On 10-5-2023</p>
         </div>
-        <a class="text-main-color fw-bold">View All</a>
+        <a class="text-main-color fw-bold" [routerLink]="['/Activities']" routerLinkActive="router-link-active">View
+          All</a>
       </div>
       @if (isLoadingHomeData) {
       <app-home-skeleton [type]="'activities'"></app-home-skeleton>

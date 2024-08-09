@@ -6,6 +6,7 @@ import { catchError, finalize, Subscription, tap } from 'rxjs';
 import { HomeService } from '../../services/home.service';
 import { Activities } from '../../interfaces/home';
 import { DropdownModule } from 'primeng/dropdown';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChartModule } from 'primeng/chart';
@@ -15,6 +16,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [
     DropdownModule,
+    RouterModule,
     CommonModule,
     ChartModule,
     FormsModule,
