@@ -10,6 +10,13 @@ export const routes: Routes = [
       )
   },
   {
+    path: 'Activities',
+    loadComponent: () =>
+      import('./components/activities/activities.component').then(
+        (c) => c.ActivitiesComponent
+      )
+  },
+  {
     path: 'Error',
     loadComponent: () =>
       import('./components/error404/error404.component').then(

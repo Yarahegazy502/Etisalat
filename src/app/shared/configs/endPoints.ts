@@ -2,4 +2,5 @@
 
 export const roots = {
   homeData: '/posts',
+  posts: '/posts',
 };

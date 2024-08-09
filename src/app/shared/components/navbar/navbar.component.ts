@@ -29,7 +29,7 @@ export class NavbarComponent {
     this.isUserLoggedIn = true;
     this.navAllLinks = [
       { id: 1, name: 'Home', route: '/Home' },
-      { id: 2, name: 'My Activities', route: '/My-Activities' },
+      { id: 2, name: 'My Activities', route: '/Activities' },
       { id: 3, name: 'SPOCs', route: '/Spocs' },
     ];
   }

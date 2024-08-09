@@ -27,7 +27,7 @@ export class NavbarMobileComponent {
     this.isUserLoggedIn = true;
     this.navAllLinks = [
       { id: 1, name: 'Home', route: '/Home', icon: 'pi-home' },
-      { id: 2, name: 'My Activities', route: '/My-Activities', icon: 'pi-info-circle' },
+      { id: 2, name: 'My Activities', route: '/Activities', icon: 'pi-info-circle' },
       { id: 3, name: 'SPOCs', route: '/Spocs', icon: 'pi-hourglass' },
     ];
   }
