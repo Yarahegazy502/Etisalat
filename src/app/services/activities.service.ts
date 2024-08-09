@@ -23,4 +23,7 @@ export class ActivitiesService {
     }
     return this.http.post(`${this.apiUrl}/${roots?.posts}`, data);
   }
+  deletePostById(id?: number | null): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${roots?.posts}/${id}`);
+  }
 }

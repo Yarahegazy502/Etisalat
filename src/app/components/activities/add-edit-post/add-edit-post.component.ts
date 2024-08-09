@@ -103,7 +103,8 @@ export class AddEditPostComponent {
   private finalizeAddEditPost(): void {
     this.publicService.showGlobalLoader.next(false);
   }
-  // End Add/Edit Bank
+  // End Add/Edit Post
+
 
   cancel(): void {
     this.ref?.close({ listChanged: false });
@@ -117,8 +118,6 @@ export class AddEditPostComponent {
     this.setMessage(err || 'An Error Occur', 'error');
   }
   private setMessage(message: string, type?: string | null): void {
-    console.log(message);
-
     this.alertsService.openToast(type, type, message);
   }
 

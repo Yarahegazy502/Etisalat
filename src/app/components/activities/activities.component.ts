@@ -1,21 +1,24 @@
+import { ActivitiesSkeletonComponent } from './activities-skeleton/activities-skeleton.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { AddEditPostComponent } from './add-edit-post/add-edit-post.component';
 import { AlertsService } from './../../services/generic/alerts.service';
 import { ActivitiesService } from './../../services/activities.service';
-import { Component } from '@angular/core';
-import { ButtonComponent } from '../../shared/components/button/button.component';
+import { PublicService } from '../../services/generic/public.service';
 import { catchError, finalize, Subscription, tap } from 'rxjs';
-import { CommonModule } from '@angular/common';
-import { ActivitiesSkeletonComponent } from './activities-skeleton/activities-skeleton.component';
-import { Paginator, PaginatorModule } from 'primeng/paginator';
-import { AddEditPostComponent } from './add-edit-post/add-edit-post.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogService } from 'primeng/dynamicdialog';
+import { PaginatorModule } from 'primeng/paginator';
+import { ConfirmationService } from 'primeng/api';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-activities',
   standalone: true,
-  imports: [ButtonComponent, CommonModule, ActivitiesSkeletonComponent, PaginatorModule],
+  imports: [ButtonComponent, CommonModule, ActivitiesSkeletonComponent, PaginatorModule, ConfirmDialogModule],
   templateUrl: './activities.component.html',
   styleUrl: './activities.component.scss',
-  providers: [DialogService]
+  providers: [DialogService, ConfirmationService]
 })
 export class ActivitiesComponent {
   private subscriptions: Subscription[] = [];
@@ -25,9 +28,11 @@ export class ActivitiesComponent {
   paginatedPostsList: any = [];
 
   constructor(
+    private confirmationService: ConfirmationService,
     private activitiesService: ActivitiesService,
     private alertsService: AlertsService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private publicService: PublicService
   ) { }
 
   ngOnInit(): void {
@@ -83,6 +88,39 @@ export class ActivitiesComponent {
       this.currentPage = 1;
     });
   }
+
+
+  //Start Delete Post Functions
+  deletePost(item: any): void {
+    this.confirmationService?.confirm({
+      message: 'Are you sure you want to delete this post',
+      header: 'Confirm Delete',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.deleteItem(item);
+      }
+    });
+  }
+  deleteItem(item: any): void {
+    this.publicService.showGlobalLoader.next(true);
+    let deletePostSubscription: Subscription = this.activitiesService?.deletePostById(item?.id)?.pipe(
+      tap((res: any) => this.processDeleteResponse(res)),
+      catchError(err => this.handleError(err)),
+      finalize(() => {
+        this.publicService.showGlobalLoader.next(false);
+      })
+    ).subscribe();
+    this.subscriptions.push(deletePostSubscription);
+  }
+  private processDeleteResponse(res: any): void {
+    if (res) {
+      this.alertsService.openToast('success', 'success', 'success');
+      this.getPosts();
+    } else {
+      this.handleError(res.message);
+    }
+  }
+  //End Delete Post Functions
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription: Subscription) => {

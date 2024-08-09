@@ -31,7 +31,7 @@
               </app-button>
               <app-button [text]="'Edit'" [type]="'solid-main'" (buttonAction)="addEditPost('edit',item)">
               </app-button>
-              <app-button [text]="'Delete'" [type]="'outline-main'">
+              <app-button [text]="'Delete'" [type]="'outline-main'" (buttonAction)="deletePost(item)">
               </app-button>
             </div>
           </div>
@@ -46,3 +46,4 @@
     </div>
   </div>
 </div>
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

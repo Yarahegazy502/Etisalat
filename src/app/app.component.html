@@ -9,8 +9,8 @@
 <app-footer></app-footer>
 }
 
-<p-toast [showTransformOptions]="'translateX(-100%)'" [showTransitionOptions]="'500ms'"
-  [hideTransitionOptions]="'500ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+<p-toast position="top-right" [baseZIndex]="5000000000" showTransitionOptions="0" [preventOpenDuplicates]="true"
+  [breakpoints]="{'786px': {width: '80%', margin:'auto'}}"></p-toast>
 
 @if (showSplashScreen) {
 <app-splash-screen></app-splash-screen>
