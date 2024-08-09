@@ -20,7 +20,23 @@
             <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
               <h5 class="fs-5-1 mb-0">All Jobs Status</h5>
               <p-dropdown [options]="statusTypes" [(ngModel)]="statusType" optionLabel="name" placeholder="Type"
-                [filter]="false" [styleClass]="'status-type-dropdown'"></p-dropdown>
+                (onChange)="changeStatusType()" [filter]="false" [styleClass]="'status-type-dropdown'"></p-dropdown>
+            </div>
+            <div class="row align-items-center pt-4">
+              <div class="col-lg-6">
+                <p-chart type="doughnut" [data]="data" [options]="chartOptions"></p-chart>
+              </div>
+              <div class="col-lg-6">
+                @for (item of data.labels; track item; let index = $index) {
+                <div class="d-flex align-items-baseline gap-2">
+                  <div class="color-container" [style.background-color]="getBackgroundColor(index)">
+                  </div>
+                  <p class="mb-0 fw-bold">{{data.datasets[0].data[index]}}M
+                    <span>{{item}}</span>
+                  </p>
+                </div>
+                }
+              </div>
             </div>
           </div>
         </div>
