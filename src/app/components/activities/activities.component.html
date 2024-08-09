@@ -14,7 +14,7 @@
       @else {
       <div class="row gy-4 mt-2">
         @for (item of paginatedPostsList; track $index) {
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+        <div class="col-xl-4 col-lg-4 col-md-6">
           <div class="global-card h-100 d-flex flex-column justify-content-between">
             <div class="">
               <div>
@@ -39,7 +39,7 @@
         }
       </div>
       <div class=" mt-4">
-        <p-paginator *ngIf="posts?.length>0" [first]="1" [rows]="8" (onPageChange)="onPageChangePosts($event)"
+        <p-paginator *ngIf="posts.length>0" [first]="1" [rows]="8" (onPageChange)="onPageChangePosts($event)"
           [totalRecords]="posts.length" [pageLinkSize]="3"></p-paginator>
       </div>
       }

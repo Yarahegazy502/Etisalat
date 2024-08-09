@@ -11,6 +11,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { PaginatorModule } from 'primeng/paginator';
 import { ConfirmationService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
+import { Post } from '../../interfaces/post';
 import { Component } from '@angular/core';
 
 @Component({
@@ -24,7 +25,7 @@ import { Component } from '@angular/core';
 export class ActivitiesComponent {
   private subscriptions: Subscription[] = [];
   isLoadingPosts: boolean = false;
-  posts: any = [];
+  posts: Post[] = [];
   currentPage: any = 1;
   paginatedPostsList: any = [];
 

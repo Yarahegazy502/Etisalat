@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Post } from '../../../interfaces/post';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-post-details',
@@ -9,7 +10,7 @@ import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
   styleUrl: './post-details.component.scss'
 })
 export class PostDetailsComponent {
-  postData: any;
+  postData!: Post;
 
   constructor(
     private config: DynamicDialogConfig,
