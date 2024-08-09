@@ -1,5 +1,5 @@
 <button class="btn btn-{{type}} d-flex justify-content-center align-items-center gap-1 rounded-pill"
-  [disabled]="isDisabled">
+  [disabled]="isDisabled" (click)="clickBtn()">
   @if (icon) {
   <i [class]="icon"></i>
   }

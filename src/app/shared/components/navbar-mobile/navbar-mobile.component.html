@@ -1,0 +1,54 @@
+<nav class="navbar-mobile w-100 bg-white-color shadow-sm d-lg-none d-flex align-items-center">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <div>
+        <img [src]="'assets/images/logos/logo.png'" alt="logo" class="logo w-100" width="82" height="48">
+      </div>
+      <div>
+        <button class="menu-icon bg-transparent border-0" (click)="openSidebar()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-deep" width="34" height="34"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 6h16" />
+            <path d="M7 12h13" />
+            <path d="M10 18h10" />
+          </svg>
+        </button>
+        <!-- <app-language-selector></app-language-selector> -->
+      </div>
+    </div>
+  </div>
+</nav>
+<p-sidebar [(visible)]="displayMenu" [position]="currentLanguage=='ar'?'right':'left'">
+  <div class="overlay position-absolute"></div>
+  <div class="position-relative">
+    <div class="d-flex align-items-center justify-content-between gap-2 my-4">
+      <a class="logo-img" (click)="closeSidebar()" [routerLink]="['/Home']" title="logo">
+        <img [src]="'assets/images/logos/logo.png'" alt="logo" class="logo w-100" width="82" height="48">
+      </a>
+      <a class="close d-flex justify-content-center align-items-center rounded-circle text-white-color" title="close"
+        (click)="closeSidebar()">
+        <i class="pi pi-times fs-8"></i>
+      </a>
+    </div>
+
+    <div class="mt-5 relative">
+      <ul class="p-0">
+        @for(link of navAllLinks;track link.id){
+        <li class="nav-item">
+          <a class="nav-link d-flex gap-2" (click)="closeSidebar()" [routerLink]="[link.route]"
+            routerLinkActive="active">
+            <i class="pi {{link.icon}}"></i>
+            {{link.name}}</a>
+        </li>
+        }
+      </ul>
+      <div class="d-flex flex-column gap-3 mt-4">
+        <app-button [text]="'download samples'" [type]="'outline-main'"></app-button>
+        <app-button [text]="'create Batch'" [type]="'solid-main'" [icon]="'pi pi-plus-circle'"></app-button>
+        <app-user-info></app-user-info>
+      </div>
+    </div>
+  </div>
+</p-sidebar>

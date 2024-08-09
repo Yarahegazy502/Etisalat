@@ -1,6 +1,7 @@
 // navbar
 export interface NavbarLinks {
   id?: number | null;
+  icon?: string | null;
   name: string;
   route: string | null;
 }

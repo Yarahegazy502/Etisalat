@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 // Components
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { NavbarMobileComponent } from './shared/components/navbar-mobile/navbar-mobile.component';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,9 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     RouterOutlet,
 
     // Components
+    NavbarMobileComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
