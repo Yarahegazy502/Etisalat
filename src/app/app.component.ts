@@ -9,6 +9,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarMobileComponent } from './shared/components/navbar-mobile/navbar-mobile.component';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { SplashScreenComponent } from './shared/components/splash-screen/splash-screen.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { MessageService } from 'primeng/api';
 
     // Components
     NavbarMobileComponent,
+    SplashScreenComponent,
     NavbarComponent,
     FooterComponent,
   ],
@@ -31,10 +33,16 @@ import { MessageService } from 'primeng/api';
 export class AppComponent {
   title = 'etisalat';
   shouldRender: boolean = false;
+  showSplashScreen: boolean = true;
 
   constructor(
     private router: Router,
-  ) { }
+  ) {
+    this.showSplashScreen = true;
+    setTimeout(() => {
+      this.showSplashScreen = false;
+    }, 2000);
+  }
 
   ngDoCheck(): void {
     this.renderCheck();

@@ -8,6 +8,8 @@ import { ChartModule } from 'primeng/chart';
 import { Component } from '@angular/core';
 import { catchError, finalize, Subscription, tap } from 'rxjs';
 import { HomeService } from '../../services/home.service';
+import { AlertsService } from '../../services/generic/alerts.service';
+import { HomeSkeletonComponent } from './home-skeleton/home-skeleton.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -17,8 +19,9 @@ import { HomeService } from '../../services/home.service';
     ChartModule,
     FormsModule,
 
+    ActivitieCardComponent,
+    HomeSkeletonComponent,
     HomeSearchComponent,
-    ActivitieCardComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -48,7 +51,8 @@ export class HomeComponent {
   chartOptions: any;
 
   constructor(
-    private homeService: HomeService
+    private alertsService: AlertsService,
+    private homeService: HomeService,
   ) { }
 
   ngOnInit(): void {
@@ -67,7 +71,7 @@ export class HomeComponent {
 
   getHomeData(): void {
     this.isLoadingHomeData = true;
-    let placeDataSubscription = this.homeService?.getHomeData()?.pipe(
+    let homeDataSubscription = this.homeService?.getHomeData()?.pipe(
       tap((res: any) => {
         if (res?.code === 200) {
           this.homeData = res.data;
@@ -79,10 +83,10 @@ export class HomeComponent {
       finalize(() => this.isLoadingHomeData = false)
     ).subscribe();
 
-    this.subscriptions.push(placeDataSubscription);
+    this.subscriptions.push(homeDataSubscription);
   }
   handleError(err: any): any {
-
+    this.alertsService?.openToast('error', err || 'An error occurred');
   }
 
   getChartData(): void {
