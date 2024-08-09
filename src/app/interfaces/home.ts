@@ -1,4 +1,4 @@
-// Activites
+// Activities
 export interface Activities {
   id?: number | null;
   count: number;

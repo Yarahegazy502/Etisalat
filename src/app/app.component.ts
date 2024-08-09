@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarMobileComponent } from './shared/components/navbar-mobile/navbar-mobile.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,7 @@ import { NavbarMobileComponent } from './shared/components/navbar-mobile/navbar-
   imports: [
     CommonModule,
     RouterOutlet,
+    ToastModule,
 
     // Components
     NavbarMobileComponent,
@@ -21,7 +24,9 @@ import { NavbarMobileComponent } from './shared/components/navbar-mobile/navbar-
     FooterComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  providers: [MessageService],
+
 })
 export class AppComponent {
   title = 'etisalat';

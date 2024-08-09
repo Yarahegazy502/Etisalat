@@ -4,8 +4,10 @@ import { Activities } from '../../interfaces/home';
 import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Component } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
+import { Component } from '@angular/core';
+import { catchError, finalize, Subscription, tap } from 'rxjs';
+import { HomeService } from '../../services/home.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -22,6 +24,10 @@ import { ChartModule } from 'primeng/chart';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  private subscriptions: Subscription[] = [];
+  isLoadingHomeData: boolean = false;
+  homeData: any;
+
   dailyJobsStatus: any = [1, 2, 3, 4, 5];
   statusTypes: any = [
     { id: 1, name: 'Weekly' },
@@ -41,7 +47,13 @@ export class HomeComponent {
   data: any;
   chartOptions: any;
 
+  constructor(
+    private homeService: HomeService
+  ) { }
+
   ngOnInit(): void {
+    this.getHomeData();
+
     this.getChartData();
     this.chartOptions = {
       responsive: true,
@@ -51,6 +63,26 @@ export class HomeComponent {
         }
       }
     }
+  }
+
+  getHomeData(): void {
+    this.isLoadingHomeData = true;
+    let placeDataSubscription = this.homeService?.getHomeData()?.pipe(
+      tap((res: any) => {
+        if (res?.code === 200) {
+          this.homeData = res.data;
+        } else {
+          this.handleError(res?.message);
+        }
+      }),
+      catchError(err => this.handleError(err)),
+      finalize(() => this.isLoadingHomeData = false)
+    ).subscribe();
+
+    this.subscriptions.push(placeDataSubscription);
+  }
+  handleError(err: any): any {
+
   }
 
   getChartData(): void {
@@ -92,5 +124,13 @@ export class HomeComponent {
       this.dataItems = [6, 3, 2, 2];
     }
     this.getChartData();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      if (subscription && subscription.closed) {
+        subscription.unsubscribe();
+      }
+    });
   }
 }

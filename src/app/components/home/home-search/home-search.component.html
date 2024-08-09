@@ -1,8 +1,8 @@
-<form role="search" class="search-group bg-white-color p-3 d-flex align-items-center">
+<div role="search" class="search-group bg-white-color p-3 d-flex align-items-center">
   <p-dropdown [options]="jobIds" [(ngModel)]="jobId" optionLabel="name" placeholder="Job Id" [filter]="false"
     [styleClass]="'search-dropdown'"></p-dropdown>
   <input type="text" placeholder="Search by Job ID" class="border-0 border-start px-3 w-100">
   <a class="border-start ps-3">
     <i class="pi pi-search fs-5"></i>
   </a>
-</form>
+</div>

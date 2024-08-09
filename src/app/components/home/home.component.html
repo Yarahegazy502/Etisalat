@@ -23,19 +23,22 @@
                 (onChange)="changeStatusType()" [filter]="false" [styleClass]="'status-type-dropdown'"></p-dropdown>
             </div>
             <div class="row align-items-center pt-3">
-              <div class="col-lg-6">
+              <div class="col-sm-6 order-sm-1 order-2 mt-sm-0 mt-3">
                 <p-chart type="doughnut" [data]="data" [options]="chartOptions"></p-chart>
               </div>
-              <div class="col-lg-6">
-                @for (item of data.labels; track item; let index = $index) {
-                <div class="d-flex align-items-baseline gap-2">
-                  <div class="color-container" [style.background-color]="getBackgroundColor(index)">
+              <div class="col-sm-6 order-sm-2 order-1">
+                <div
+                  class="d-flex flex-sm-column gap-sm-0 gap-2 flex-wrap justify-content-sm-start justify-content-center">
+                  @for (item of data.labels; track item; let index = $index) {
+                  <div class="d-flex align-items-baseline gap-2">
+                    <div class="color-container" [style.background-color]="getBackgroundColor(index)">
+                    </div>
+                    <p class="mb-0 fw-bold">{{data.datasets[0].data[index]}}M
+                      <span>{{item}}</span>
+                    </p>
                   </div>
-                  <p class="mb-0 fw-bold">{{data.datasets[0].data[index]}}M
-                    <span>{{item}}</span>
-                  </p>
+                  }
                 </div>
-                }
               </div>
             </div>
           </div>

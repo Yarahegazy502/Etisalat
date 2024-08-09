@@ -1,4 +1,4 @@
-export interface RootsApi {
-  doctors?:string,
-  places?:string,
-}
+// export interface RootsApi {
+//   doctors?:string,
+//   places?:string,
+// }
