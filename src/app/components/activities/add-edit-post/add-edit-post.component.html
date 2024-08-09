@@ -1,0 +1,65 @@
+<div id="modal-form">
+  <form [formGroup]="postForm" (ngSubmit)="submit()" aria-label="add-client-form">
+    <div class="form-content">
+      <div class="mb-3">
+        <label for="title" class="mb-2 required">
+          Title
+        </label>
+        <input type="text" class="form-control" formControlName="title"
+          (input)="publicService.clearValidationErrors(formControls?.title)"
+          [class.border-red]="formControls?.title?.invalid && (formControls?.title?.dirty || formControls?.title?.touched)"
+          placeholder="Enter Title">
+        <div class="mt-2">
+          <ng-container
+            *ngIf="formControls?.title?.invalid && (formControls?.title?.dirty || formControls?.title?.touched)">
+            <ng-container *ngIf="formControls?.title?.errors?.['required']">
+              <span class="text-danger fs-8">
+                This Field is required
+              </span>
+            </ng-container>
+
+            <ng-container *ngIf="formControls?.title?.errors?.['minlength']">
+              <span class="text-danger fs-8 d-block">
+                Title Length must be large than 2
+              </span>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="mb-2 required">
+          Description
+        </label>
+        <textarea class="form-control" formControlName="description"
+          (input)="publicService.clearValidationErrors(formControls?.description)" [class.border-red]=" formControls?.description?.invalid && (formControls?.description?.dirty ||
+              formControls?.description?.touched)"
+          [class.is-valid]="formControls?.description?.valid && (formControls?.description?.dirty || formControls?.description?.touched)"
+          placeholder="Enter description"></textarea>
+        <div class="mt-2">
+          <ng-container
+            *ngIf="formControls?.description?.invalid && (formControls?.description?.dirty || formControls?.description?.touched)">
+            <ng-container *ngIf="formControls?.description?.errors?.['required']">
+              <span class="text-danger fs-8">
+                This Field is required
+              </span>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end gap-3 flex-wrap mt-4">
+      <button type="submit" class="btn btn-solid-main d-flex align-items-center justify-content-center gap-2">
+        <span>
+          Save
+        </span>
+        <i class="pi pi-save"></i>
+      </button>
+      <button type="button" class="btn btn-outline-main d-flex align-items-center gap-2" (click)="cancel()">
+        <span>
+          Cancel
+        </span>
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+  </form>
+</div>

@@ -10,6 +10,7 @@ import { NavbarMobileComponent } from './shared/components/navbar-mobile/navbar-
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { SplashScreenComponent } from './shared/components/splash-screen/splash-screen.component';
+import { OverlayLoadingComponent } from './shared/components/overlay-loading/overlay-loading.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { SplashScreenComponent } from './shared/components/splash-screen/splash-
     ToastModule,
 
     // Components
+    OverlayLoadingComponent,
     NavbarMobileComponent,
     SplashScreenComponent,
     NavbarComponent,

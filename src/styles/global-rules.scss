@@ -4,6 +4,7 @@ html {
 }
 body {
   font-family: "Roboto", sans-serif;
+  background-color: #fafafa;
 }
 *:focus,
 *:focus-visible {
@@ -139,4 +140,30 @@ table {
 
 small {
   font-size: 0.7em;
+}
+
+.p-paginator {
+  background-color: transparent !important;
+  gap: 5px;
+
+  .p-link {
+    background-color: #fff !important;
+    border-radius: 5px;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+  }
+}
+
+.p-paginator-pages {
+  gap: 5px;
+  display: flex;
+
+  .p-link {
+    &.p-highlight {
+      border: 1px solid var(--bg-main-color) !important;
+      background-color: var(--bg-main-color) !important;
+      color: #fff !important;
+    }
+  }
 }

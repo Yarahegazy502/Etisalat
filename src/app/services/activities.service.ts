@@ -17,4 +17,10 @@ export class ActivitiesService {
   getPosts(): Observable<any> {
     return this.http.get(`${this.apiUrl}/${roots?.posts}`);
   }
+  addEditPost(data: any, id?: number | null): Observable<any> {
+    if (id) {
+      return this.http.put(`${this.apiUrl}/${roots?.posts}/${id}`, data);
+    }
+    return this.http.post(`${this.apiUrl}/${roots?.posts}`, data);
+  }
 }
