@@ -1,0 +1,14 @@
+#error404-page {
+  background-color: var(--bg-white-color);
+  .error-img {
+    img {
+      width: 70%;
+    }
+  }
+  .btn-solid-main {
+    background-color: var(--bg-main-color);
+    border-color: var(--bg-main-color);
+    color: var(--text-white-color);
+    height: 50px;
+  }
+}

@@ -1,7 +1,11 @@
 <div role="search" class="search-group bg-white-color p-3 d-flex align-items-center">
-  <p-dropdown [options]="jobIds" [(ngModel)]="jobId" optionLabel="name" placeholder="Job Id" [filter]="false"
+  <p-dropdown [options]="filterTypes" [(ngModel)]="type" optionLabel="name" placeholder="Filter" [filter]="false"
     [styleClass]="'search-dropdown'"></p-dropdown>
-  <input type="text" placeholder="Search by Job ID" class="border-0 border-start px-3 w-100">
+  <input type="text" placeholder="Search by Job ID" class="border-0 border-start px-3 w-100" #search
+    (keyup)="handleSearch(search.value)">
+  <a *ngIf="search.value" class="px-3 pt-1" (click)="clearSearchValue(search)">
+    <i class="pi pi-times text-danger"></i>
+  </a>
   <a class="border-start ps-3">
     <i class="pi pi-search fs-5"></i>
   </a>

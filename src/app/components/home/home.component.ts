@@ -63,6 +63,13 @@ export class HomeComponent {
     }
   }
 
+  search(event: any): void {
+    console.log(event);
+  }
+  filterType(event: any): void {
+    console.log(event);
+  }
+
   getHomeData(): void {
     this.isLoadingHomeData = true;
     let homeDataSubscription = this.homeService?.getHomeData()?.pipe(

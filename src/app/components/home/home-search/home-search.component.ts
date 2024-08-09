@@ -1,8 +1,8 @@
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DropdownModule } from 'primeng/dropdown';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home-search',
@@ -17,11 +17,44 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home-search.component.scss'
 })
 export class HomeSearchComponent {
-  jobIds: any = [
-    { id: 1, name: 'Job Id 1' },
-    { id: 2, name: 'Job Id 2' },
-    { id: 3, name: 'Job Id 3' },
-    { id: 4, name: 'Job Id 4' },
+  @Output() handleSearchEmit = new EventEmitter();
+  @Output() handleFilterTypeEmit = new EventEmitter();
+  filterTypes: any = [
+    { id: 1, name: 'Job Id' },
+    { id: 2, name: 'Name' },
+    { id: 3, name: 'Activites' },
   ];
-  jobId: any;
+  type: any;
+
+  private searchSubject = new Subject<any>();
+  isLoadingSearch: boolean = false;
+  keyword: string = '';
+
+  ngOnInit(): void {
+    this.type = this.filterTypes[0];
+    this.searchSubject.pipe(debounceTime(750)).subscribe(event => {
+      this.searchService(event);
+    });
+  }
+
+  onChangeFilter(): void {
+    this.handleFilterTypeEmit.emit(this.type);
+  }
+
+  handleSearch(event: any): void {
+    this.searchSubject.next(event);
+  }
+
+  searchService(event: any): void {
+    this.keyword = event;
+    this.isLoadingSearch = true;
+    this.handleSearchEmit.emit(this.keyword);
+  }
+
+  clearSearchValue(event: any): void {
+    event.value = '';
+    this.keyword = '';
+    this.isLoadingSearch = true;
+    this.handleSearchEmit.emit(this.keyword);
+  }
 }

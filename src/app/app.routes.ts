@@ -9,4 +9,12 @@ export const routes: Routes = [
         (c) => c.HomeComponent
       )
   },
+  {
+    path: 'Error',
+    loadComponent: () =>
+      import('./components/error404/error404.component').then(
+        (c) => c.Error404Component
+      ),
+  },
+  { path: '**', redirectTo: '/Error' }
 ];

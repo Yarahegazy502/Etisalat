@@ -3,7 +3,8 @@
     <div class="container">
       <h1 class="text-white-color fs-4">Hi ,Mohamed Ab Elrahman</h1>
       <div class="mt-3">
-        <app-home-search></app-home-search>
+        <app-home-search (handleSearchEmit)="search($event)"
+          (handleFilterTypeEmit)="filterType($event)"></app-home-search>
         <div class="d-flex justify-content-end align-items-center mt-3 gap-1 text-white-color">
           <i class="pi pi-angle-down fs-5"></i>
           <span>Advanced Search</span>
@@ -132,5 +133,4 @@
     </div>
 
   </section>
-
 </div>
