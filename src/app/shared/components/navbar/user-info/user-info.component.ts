@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 })
 export class UserInfoComponent {
   currentLoginInformation: UserInfo = {
-    photo: '',
+    photo: 'https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?ga=GA1.2.584415855.1675101629&semt=ais_hybrid',
     full_name: 'yara ibrahim'
   };
   summaryName: string = '';

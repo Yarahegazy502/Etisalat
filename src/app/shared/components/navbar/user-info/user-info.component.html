@@ -2,8 +2,10 @@
   <a class="btn p-0 d-flex gap-1 align-items-center dropdown-toggle" role="button" data-bs-toggle="dropdown"
     aria-expanded="false">
     @if (currentLoginInformation.photo) {
-    <img [src]="currentLoginInformation.photo" [alt]="'name'" onerror="src='assets/images/not-found/no-img.svg'"
-      loading="lazy" class="w-100 h-100 rounded-circle">
+    <div class="logo-img">
+      <img [src]="currentLoginInformation.photo" [alt]="'name'" onerror="src='assets/images/not-found/no-img.svg'"
+        loading="lazy" class="w-100 h-100 rounded-circle">
+    </div>
     }@else {
     <span
       class="rounded-circle profile-img d-flex justify-content-center align-items-center fw-bold text-uppercase shadow-sm position-relative bg-white-color text-main-color">
